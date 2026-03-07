@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://btj3pltlw7qyt" path="res://Scripts/player.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bek8bdlm0e2dr" path="res://icon.svg" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://dtoglsc3v58tm" path="res://Scripts/camera.gd" id="3_8gbba"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jjvhh"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_bo1nx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8gbba"]
 
 [node name="Node3D" type="Node3D" unique_id=1860076404]
 
@@ -26,3 +29,13 @@ shape = SubResource("SeparationRayShape3D_bo1nx")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=792973069]
 transform = Transform3D(-0.0579125, 0.22204313, -0.9733155, -2.7256521e-09, 0.97495174, 0.22241642, 0.9983217, 0.012880693, -0.056461893, -5.1638975, 2.550151, -0.97935915)
+current = true
+script = ExtResource("3_8gbba")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=793380204]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=379119184]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1268402796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7635149, 0)
+shape = SubResource("BoxShape3D_8gbba")
