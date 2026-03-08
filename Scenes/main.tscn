@@ -6,9 +6,14 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jjvhh"]
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_bo1nx"]
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_8gbba"]
+length = 10.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gbba"]
+
+[sub_resource type="Environment" id="Environment_8gbba"]
+background_mode = 2
+ambient_light_color = Color(0.4215269, 0.839774, 0.8979303, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1860076404]
 
@@ -19,23 +24,28 @@ script = ExtResource("1_bo1nx")
 shape = SubResource("CapsuleShape3D_jjvhh")
 
 [node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D" unique_id=421217366]
-transform = Transform3D(-3.1991785e-08, 0, -3.449367, 0, 1.5363584, 0, 0.73188674, 0, -1.5077663e-07, 0, 0, 0)
+transform = Transform3D(0.73188674, 0, 0, 0, 1.5363584, 0, 0, 0, 3.449367, 0, 0, 0)
 texture = ExtResource("2_8gbba")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1465307255]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D" unique_id=77325691]
-shape = SubResource("SeparationRayShape3D_bo1nx")
+transform = Transform3D(1, 0, 0, 0, 0.938481, 0.34533098, 0, -0.34533098, 0.938481, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_8gbba")
+spring_length = 11.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=792973069]
-transform = Transform3D(-0.0579125, 0.22204313, -0.9733155, -2.7256521e-09, 0.97495174, 0.22241642, 0.9983217, 0.012880693, -0.056461893, -5.1638975, 2.550151, -0.97935915)
 current = true
 script = ExtResource("3_8gbba")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=793380204]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=379119184]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1268402796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7635149, 0)
 shape = SubResource("BoxShape3D_8gbba")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=793380204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5657811, 0.8945656, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297211543]
+environment = SubResource("Environment_8gbba")
